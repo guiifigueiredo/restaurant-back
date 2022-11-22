@@ -1,6 +1,10 @@
 import { Router } from 'express';
+import multer from 'multer';
+
 import {listCategory} from './useCases/categories/listCategory';
 import {createCategory} from './useCases/categories/createCategory';
+import {listProduct} from './useCases/products/listProduct';
+import {createProduct} from './useCases/products/createProduct';
 
 export const router = Router();
 
@@ -11,13 +15,9 @@ router.get('/categories', listCategory);
 router.post('/categories', createCategory);
 
 //List Products
-router.get('/products', (req,res) => {
-  res.send('ok');
-});
+router.get('/products', listProduct);
 //Create Products
-router.post('/products', (req,res) => {
-  res.send('ok');
-});
+router.post('/products', createProduct);
 //Get product by category
 router.get('/categories/:categoriesId/products', (req,res) => {
   res.send('ok');

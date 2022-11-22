@@ -1,14 +1,15 @@
 import {Request, Response} from 'express';
-import {Category} from '../../app/Category';
+import {Product} from '../../app/Product';
+
 
 //definindo o tipo da requisicao e da resposta
-export async function createCategory(req: Request, res: Response){
+export async function createProduct(req: Request, res: Response){
   try{
     //pega os dados do corpo da requisicao
     const { name, icon} = req.body;
-    const category = await Category.create({ name, icon});
+    const product = await Product.create({ name, icon});
 
-    return res.json(category);
+    return res.json(product);
   } catch (error){
     console.log(error);
     return res.sendStatus(500);
